@@ -1,0 +1,9 @@
+package com.rixar.common.auth;
+
+/**
+ * Product Of Eyasi Technologies  <br/>
+ * Author: Charden RJKU on 18/10/2022 22:05<br/>
+ */
+public enum UserIdentifierType {
+    EMAIL,PHONE,USERNAME
+}
