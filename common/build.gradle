@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    implementation 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+//    // REST & Serialization
+//    implementation 'io.quarkus:quarkus-rest-jackson'
+//    implementation 'io.quarkus:quarkus-rest-client-jackson'
+//
+//    // Jackson (if used outside REST context)
+//    implementation 'com.fasterxml.jackson.core:jackson-databind'
+//
+//    // Core Quarkus
+//    implementation 'io.quarkus:quarkus-arc'
+//    implementation 'io.quarkus:quarkus-hibernate-orm'
+//    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
+//    implementation 'io.quarkus:quarkus-hibernate-validator'
+//
+//
+//    // REST & Serialization
+//    implementation 'io.quarkus:quarkus-rest'
+//    implementation 'io.quarkus:quarkus-rest-jackson'
+//    implementation 'io.quarkus:quarkus-rest-client'
+//    implementation 'io.quarkus:quarkus-rest-client-jackson'
+//
+//    // Jackson (if used outside REST context)
+//    implementation 'com.fasterxml.jackson.core:jackson-databind'
+//
+//    // Lombok
+//    implementation 'org.projectlombok:lombok:1.18.38'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+//
+//    // Logging (optional, for SLF4J support with Quarkus)
+//    implementation 'org.slf4j:slf4j-api:2.0.13'
+//
+//    testImplementation 'io.rest-assured:rest-assured'
+//
+
+
+}
+
+group 'com.rixar.payments'
+version '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}

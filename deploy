@@ -1,0 +1,17 @@
+#!/bin/sh
+
+git pull
+
+VERSION=2025.07.22.004
+IMAGE=docker.io/esoftonics/rx-payment:${VERSION}
+
+cd payments-service || exit
+
+./gradlew build
+docker build --no-cache -f src/main/docker/Dockerfile.jvm -t ${IMAGE} .
+
+echo "Docker image built"
+echo ""
+
+docker push ${IMAGE}
+echo ""
