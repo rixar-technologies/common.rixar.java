@@ -1,12 +1,11 @@
 package com.rixar.common.adapters;
 
-import java.util.List;
-
+import com.rixar.common.dto.notifications.RxSmsNotification;
 
 public interface SmsAdapter {
 
-    void sendOne(String phone,String message);
+    void send(RxSmsNotification smsNotification);
 
-    void sendMultiple(List<String> phoneNumbers, String message);
+    String getAdapterName();
 
 }
