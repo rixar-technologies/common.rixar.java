@@ -7,15 +7,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rixar.payments.common.codes.RespCode;
 import com.rixar.payments.common.exceptions.RixarRuntimeException;
-import org.jboss.logging.Logger;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class JHelper {
-
-    private static final Logger log = Logger.getLogger(JHelper.class);
 
     public static String toJson(Object object) {
 
@@ -24,7 +21,7 @@ public class JHelper {
         }
 
         if (object instanceof File) {
-            log.warn("can not stringify file");
+            System.out.print("can not stringify file");
             return "can not stringify file";
         }
 
@@ -35,7 +32,7 @@ public class JHelper {
             objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             return objectMapper.writeValueAsString(object);
         } catch (Exception exception) {
-            log.errorf(exception,"Could not convert object %s to JSON String  %s %s", object.getClass().getSimpleName(), exception.getMessage(), object);
+            System.out.printf("Could not convert object %s to JSON String  %s %s", object.getClass().getSimpleName(), exception.getMessage(), object);
             return "";
         }
     }
@@ -44,7 +41,7 @@ public class JHelper {
     public static <T> T fromJson(String jsonString, Class<T> classOfT) {
 
         if (GoodStringUtil.isEmpty(jsonString)) {
-            log.info("invalid json string `{}`. parse failed"+jsonString);
+            System.out.print("invalid json string. parse failed: "+jsonString);
             return null;
         }
 
@@ -55,7 +52,7 @@ public class JHelper {
             objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             return objectMapper.readValue(jsonString, classOfT);
         } catch (Exception exception) {
-            log.error(exception);
+            System.out.print(exception.getMessage());
             throw new RixarRuntimeException("Failed to convert json string to java object", RespCode.UNKNOWN_ERROR);
         }
     }
@@ -63,7 +60,7 @@ public class JHelper {
     public static <T> T fromJson(String jsonString, TypeReference<T> typeReference) throws RixarRuntimeException {
 
         if (GoodStringUtil.isEmpty(jsonString)) {
-            log.infof("invalid json string  `%s`", jsonString);
+            System.out.print("invalid json string  `%s`"+ jsonString);
             return null;
         }
 
@@ -75,7 +72,7 @@ public class JHelper {
             objectMapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false);
             data = objectMapper.readValue(jsonString, typeReference);
         } catch (Exception exception) {
-            log.errorf("Could parse JSON String %s `%s`", exception.getMessage(), jsonString);
+            System.out.printf("Could parse JSON String %s `%s`", exception.getMessage(), jsonString);
             throw new RixarRuntimeException("Failed to convert json string to java object", RespCode.UNKNOWN_ERROR);
         }
         return data;

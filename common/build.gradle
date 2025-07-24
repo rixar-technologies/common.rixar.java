@@ -13,6 +13,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
 
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.2'
+
 //    // REST & Serialization
 //    implementation 'io.quarkus:quarkus-rest-jackson'
 //    implementation 'io.quarkus:quarkus-rest-client-jackson'

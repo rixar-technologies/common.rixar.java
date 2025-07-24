@@ -1,13 +1,11 @@
 package com.rixar.payments.common.utils;
 
-import org.jboss.logging.Logger;
 
 import java.math.BigInteger;
 import java.util.Base64;
 
  public class GoodStringUtil {
 
-    private static final Logger log = Logger.getLogger(GoodStringUtil.class);
 
     public static String getExtensionFromName(String fileName) {
 
@@ -137,7 +135,7 @@ import java.util.Base64;
         try {
             return Long.toString(longVal, 36).toUpperCase();
         } catch (NumberFormatException | NullPointerException ex) {
-            log.info(ex.getMessage());
+            System.out.printf(ex.getMessage());
         }
         return "--";
     }
@@ -165,7 +163,7 @@ import java.util.Base64;
             byte[] decode = Base64.getDecoder().decode(value);
             return new String(decode);
         } catch (Exception e) {
-            log.error("failed to decode base64String {}", value, e);
+            System.out.printf("failed to decode base64String %s %s", value, e);
             throw e;
         }
     }

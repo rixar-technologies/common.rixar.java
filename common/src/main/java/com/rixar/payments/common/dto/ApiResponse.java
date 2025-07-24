@@ -1,12 +1,12 @@
 package com.rixar.payments.common.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rixar.payments.common.codes.RespCode;
 import com.rixar.payments.common.utils.JHelper;
 import lombok.*;
+
 
 @NoArgsConstructor
 @AllArgsConstructor

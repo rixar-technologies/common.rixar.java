@@ -1,21 +1,13 @@
 package com.rixar.payments.common.utils;
-
-import com.rixar.payments.common.CommonKeys;
 import com.rixar.payments.common.exceptions.RixarRuntimeException;
-import org.jboss.logging.Logger;
-import org.slf4j.MDC;
 
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class GoodDateTimeUtil {
-
-    private static final Logger log = Logger.getLogger(GoodDateTimeUtil.class);
-
 
     private GoodDateTimeUtil() {
 
@@ -33,7 +25,6 @@ public class GoodDateTimeUtil {
         LocalDate startOfDay = LocalDate.now();
         return Date.from(startOfDay.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
-
 
     public static Date getEndOfDay() {
         LocalDate today = LocalDate.now();
@@ -98,7 +89,7 @@ public class GoodDateTimeUtil {
     public static Date parseEndOfDay(String dateString) {
         Date date = parseDate(dateString);
         if (date == null) {
-            log.errorf("invalid date string %s", dateString);
+            System.out.printf("invalid date string %s", dateString);
             throw new RixarRuntimeException("invalid date string: " + dateString);
         }
         return toEndOfDay(date);
@@ -129,7 +120,8 @@ public class GoodDateTimeUtil {
 
     public static Date parseDate(String dateString) {
         if (GoodStringUtil.isEmpty(dateString)) {
-            log.error("Date string is null or empty");
+            System.out.print("Date string is null or empty");
+
             throw new RixarRuntimeException("Date string is null or empty");
         }
 
@@ -137,7 +129,7 @@ public class GoodDateTimeUtil {
         try {
             return simpleDateFormat.parse(dateString);
         } catch (Exception e) {
-            log.errorf("received invalid date for parsing %s. error: %s", dateString, e.getMessage());
+            System.out.printf("received invalid date for parsing %s. error: %s", dateString, e.getMessage());
             throw new IllegalStateException("Received invalid date");
         }
     }
@@ -189,15 +181,6 @@ public class GoodDateTimeUtil {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneOffset.UTC);
         localDateTime = localDateTime.plusMonths(monthsToAdd);
         return localDateTime.toInstant(ZoneOffset.UTC);
-    }
-
-    public static long getProcessingTime() {
-        String startTimeString = MDC.get(CommonKeys.START_TIME);
-        if (GoodStringUtil.isEmpty(startTimeString)) {
-            return 0;
-        }
-        long startTime = Long.parseLong(startTimeString);
-        return System.currentTimeMillis() - startTime;
     }
 
     public static long getProcessingTime(String startTimeString) {
