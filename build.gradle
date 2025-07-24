@@ -17,8 +17,8 @@ dependencies {
 
 }
 
-group 'com.rixar.payments'
-version '1.0-SNAPSHOT'
+group 'com.rixar.common'
+version '1.0.0'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21

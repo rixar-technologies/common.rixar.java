@@ -1,4 +1,1 @@
-
-rootProject.name = 'common.rixar'
-
-include 'common'
+rootProject.name = 'common.rixar.java'
