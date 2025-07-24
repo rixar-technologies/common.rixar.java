@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RxSmsNotification {
 
-    List<String> phoneNumber;
+    List<String> phoneNumbers;
 
     String message;
 
