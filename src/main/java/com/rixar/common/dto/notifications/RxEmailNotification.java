@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Data
@@ -26,5 +27,7 @@ public class RxEmailNotification {
     String mimeVersion;
 
     String content;
+
+    HashMap<String,Object> params;
 
 }
