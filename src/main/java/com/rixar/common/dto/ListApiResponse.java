@@ -16,16 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "respCode",
-        "message",
-        "currentPageElements",
-        "currentPageNo",
-        "nextPageNo",
-        "totalElements",
-        "totalPagesCount",
-        "pageSize",
-        "respBody"})
 @Builder
 public class ListApiResponse<T> {
 
