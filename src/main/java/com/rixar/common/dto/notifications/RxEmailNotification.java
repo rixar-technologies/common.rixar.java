@@ -13,6 +13,8 @@ public class RxEmailNotification {
 
     List<String> emails;
 
+    String preferredGateway;
+
     String subject;
 
     String from;
